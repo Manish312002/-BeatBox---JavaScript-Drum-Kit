@@ -5,11 +5,13 @@ for (i=0; i<noofInstrument; i++){
 // add EventListener to each button 
 
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
-        makeSound(this.innerHTML)    
+        makeSound(this.innerHTML) 
+        buttonAnimation(this.innerHTML)
     })
 
     document.addEventListener("keydown",function(event){
         makeSound(event.key)
+        buttonAnimation(event.key)
     })
 
 }
@@ -48,3 +50,12 @@ function makeSound(event){
         default:
     }
 }
+
+function buttonAnimation(buttonKey){
+    document.querySelector("."+buttonKey).classList.add("pressed");
+    
+    setTimeout(function(){
+        document.qurySelector("."+buttonKey).classList.remove("pressed")
+    },100);
+};
+
